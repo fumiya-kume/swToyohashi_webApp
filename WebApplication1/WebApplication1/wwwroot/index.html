@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+    <title>カジコレホーム画面</title>
+</head>
+<body>
+<div id="app">
+    <el-row>
+        <el-col :span="24">
+            <el-menu
+                    mode="horizontal"
+                    background-color="#545c64"
+                    text-color="#fff"
+                    active-text-color="#ffd04b">
+                <el-menu-item index="1"><a href="https://www.ele.me" target="_blank">ホーム</a></el-menu-item>
+                <el-menu-item index="2"><a href="https://www.ele.me" target="_blank">カジコレとは</a></el-menu-item>
+                <el-menu-item index="3"><a href="https://www.ele.me" target="_blank">Q&A</a></el-menu-item>
+                <el-menu-item index="4"><a href="https://www.ele.me" target="_blank">お問い合わせ</a></el-menu-item>
+            </el-menu>
+        </el-col>
+    </el-row>
+
+    <el-row>
+        <el-col :span="12" :offset="6">
+            <el-breadcrumb separator="/">
+                <el-breadcrumb-item :to="{ path: '/' }">小倉</el-breadcrumb-item>
+                <el-breadcrumb-item :to="{ path: '/' }">夫婦のタスク</el-breadcrumb-item>
+            </el-breadcrumb>
+        </el-col>
+        <el-col :span="12"  :offset="6">
+            <el-transfer filterable :filter-method="タグで検索する" filter-placeholder="タグで検索する" v-model="HusbandTaskList" :data="TaskList" :titles="['妻', '夫']" :left-default-checked="[0,4,5]" :left-default-checked="[2,3]" :right-default-checked="[1]">
+            </el-transfer>
+        </el-col>
+    </el-row>
+</div>
+</body>
+<script src="https://unpkg.com/vue/dist/vue.js"></script>
+<!-- import JavaScript -->
+<script src="https://unpkg.com/element-ui/lib/index.js"></script>
+<script>
+    new Vue({
+        el: '#app',
+        data: {
+            TaskList: [
+                {key: 0, label: "朝ごはんを作る"},
+                {key: 1, label: "子供に食べさせる"},
+                {key: 2, label: "子供に歯磨きをさせる"},
+                {key: 3, label: "子供を着せ替えさせる"},
+                {key: 4, label: "食器を洗う"},
+                {key: 5, label: "洗濯機を回す"},
+                {key: 6, label: "洗濯機をほす"},
+                {key: 7, label: "ゴミをまとめる"},
+                {key: 8, label: "ゴミ出しをする"},
+            ],
+            HusbandTaskList: [1,2,3]
+        }
+    })
+</script>
+</html>

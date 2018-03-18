@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+    <title>カジコレホーム画面</title>
+</head>
+<body>
+<div id="app">
+    <el-row>
+        <el-col :span="24">
+            <el-menu
+                    mode="horizontal"
+                    background-color="#545c64"
+                    text-color="#fff"
+                    active-text-color="#ffd04b">
+                <el-menu-item index="1"><a href="https://www.ele.me" target="_blank">ホーム</a></el-menu-item>
+                <el-menu-item index="2"><a href="https://www.ele.me" target="_blank">カジコレとは</a></el-menu-item>
+                <el-menu-item index="3"><a href="https://www.ele.me" target="_blank">Q&A</a></el-menu-item>
+                <el-menu-item index="4"><a href="https://www.ele.me" target="_blank">お問い合わせ</a></el-menu-item>
+            </el-menu>
+        </el-col>
+
+        <el-col :span="24">
+            <el-carousel indicator-position="outside">
+                <el-carousel-item :key="0">
+                    <el-form>
+                        <el-form-item label="家事タイトル">
+                            <el-input>食器を洗う</el-input>
+                        </el-form-item>
+                        <el-form-item label="家事詳細">
+                            <el-input>食器をすすぎ食洗機の中に入れる</el-input>
+                        </el-form-item>
+                        <el-row>
+                            <el-col :span="8">
+                                <el-form-item label="担当者">
+                                    <el-button type="text">旦那</el-button>
+                                </el-form-item>
+                            </el-col>
+                            <el-col :span="8">
+                                <el-tag
+                                        v-for="tag in tags"
+                                        :key="tag.name"
+                                        closable
+                                        :type="tag.type">
+                                    {{tag.name}}
+                                </el-tag>
+                            </el-col>
+                            <el-popover ref="popover1" placement="top-start" title="コメント機能" width="200" trigger="hover"
+                                        content="コメントをタスクにつけることができます！">
+                            </el-popover>
+                            <el-col :span="8">
+
+                                <el-badge value="new" class="item">
+                                    <el-button v-popover:popover1 icon="el-icon-edit">コメントを見る</el-button>
+                                </el-badge>
+                            </el-col>
+                        </el-row>
+                        <el-row>
+                            <el-col :span="8">
+                                <el-form-item label="ステータス">
+                                    <el-button type="text">完了</el-button>
+                                </el-form-item>
+                            </el-col>
+                            <el-popover ref="popover1" placement="top-start" title="コメント機能" width="200" trigger="hover"
+                                        content="コメントをタスクにつけることができます！">
+                            </el-popover>
+                        </el-row>
+                        <el-row :gutter="20">
+                            <el-col :span="20">
+                                <el-input type="textarea" placeholder="Please input" class="input-with-select">
+                                </el-input>
+                            </el-col>
+                            <el-col :span="4">
+                                <el-button type="primary" icon="el-icon-edit">コメントする</el-button>
+                            </el-col>
+                        </el-row>
+                    </el-form>
+                </el-carousel-item>
+
+            </el-carousel>
+        </el-col>
+
+
+    </el-row>
+</div>
+</body>
+<script src="https://unpkg.com/vue/dist/vue.js"></script>
+<!-- import JavaScript -->
+<script src="https://unpkg.com/element-ui/lib/index.js"></script>
+<script>
+    new Vue({
+        el: '#app',
+        data: {
+            tags: [
+                {name: '食事', type: ''},
+                {name: '食洗機', type: 'success'},
+                {name: '朝やること', type: 'info'}]
+        }
+    })
+</script>
+</html>
